@@ -1,6 +1,7 @@
 import bodyParser from "body-parser";
 import express from "express";
 import path from "path";
+import cors from "cors";
 import models from "./models";
 import routes from "./routes/index";
 export default class Bootstrap {
@@ -13,7 +14,7 @@ export default class Bootstrap {
   }
   middleware() {
     const { app } = this;
-    // app.use(cors())
+    app.use(cors())
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
     app.use(express.static(path.join(__dirname, "public")));
